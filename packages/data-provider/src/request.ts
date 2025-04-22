@@ -4,6 +4,12 @@ import * as endpoints from './api-endpoints';
 import { setTokenHeader } from './headers-helpers';
 import type * as t from './types';
 
+// Add this line after the imports in request.ts (around line 5)
+axios.defaults.withCredentials = true;
+
+// Then, update the specific _post function for the refresh token endpoint
+
+
 async function _get<T>(url: string, options?: AxiosRequestConfig): Promise<T> {
   const response = await axios.get(url, { ...options });
   return response.data;
@@ -16,6 +22,7 @@ async function _getResponse<T>(url: string, options?: AxiosRequestConfig): Promi
 async function _post(url: string, data?: any) {
   const response = await axios.post(url, JSON.stringify(data), {
     headers: { 'Content-Type': 'application/json' },
+    withCredentials: true, // Ensure cookies are sent with the request
   });
   return response.data;
 }

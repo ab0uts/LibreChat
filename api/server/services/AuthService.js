@@ -376,6 +376,8 @@ const setAuthTokens = async (userId, res, sessionId = null) => {
       httpOnly: true,
       secure: isProduction,
       sameSite: 'strict',
+//      sameSite: 'lax',
+//      path: '/'
     });
 
     return token;

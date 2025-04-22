@@ -374,10 +374,8 @@ const setAuthTokens = async (userId, res, sessionId = null) => {
     res.cookie('refreshToken', refreshToken, {
       expires: new Date(refreshTokenExpires),
       httpOnly: true,
-      secure: isProduction,
-      sameSite: 'strict',
-//      sameSite: 'lax',
-//      path: '/'
+      // secure: isProduction,
+      sameSite: 'lax',
     });
 
     return token;
